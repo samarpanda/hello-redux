@@ -1,0 +1,27 @@
+{
+  "name": "hello-redux",
+  "description": "Sample redux app",
+  "main": "index.js",
+  "authors": [
+    "er.samarpanda@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Redux",
+    "Sample",
+    "App"
+  ],
+  "homepage": "https://github.com/samarpanda/hello-redux",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^0.14.7"
+  }
+}
