@@ -1,41 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import todoApp from './reducers'
+import App from './components/App'
 
-const counter = (state = 0, action) => {
-  switch(action.type){
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-}
+let store = createStore(todoApp, {},
+  window.devToolsExtension ? window.devToolsExtension() : undefined
+)
 
-const store = createStore(counter);
-
-const Counter = ({
-  value,
-  onIncrement,
-  onDecrement
-}) => (
-<div>
-  <h1>{value}</h1>
-  <button onClick={onDecrement}> - </button>
-  <button onClick={onIncrement}> + </button>
-</div>
-);
-
-const render = () => {
-  ReactDOM.render(
-    <Counter
-      value={store.getState()}
-      onIncrement={() => store.dispatch({type: 'INCREMENT'})}
-      onDecrement={() => store.dispatch({type: 'DECREMENT'})}
-    />, document.getElementById('app')
-  );
-};
-
-store.subscribe(render);
-render();
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+)
